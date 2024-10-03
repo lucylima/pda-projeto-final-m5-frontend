@@ -3,8 +3,23 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useState } from "react";
 
-function LoginPage() {
+function LoginPage() {''
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState("");
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    // axios post
+  };
+
   return (
     <Container
       sx={{
@@ -42,14 +57,19 @@ function LoginPage() {
           label="Email"
           variant="standard"
           type="email"
+          onChange={handleEmailChange}
         />
+
         <TextField
           id="password-field"
           label="Senha"
           variant="standard"
           type="password"
+          onChange={handlePasswordChange}
         />
-        <Button variant="contained">Entrar</Button>
+        <Button variant="contained" onClick={handleSubmit}>
+          Entrar
+        </Button>
       </Box>
     </Container>
   );
