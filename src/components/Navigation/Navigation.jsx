@@ -14,7 +14,7 @@ function Navigation() {
   };
 
   return (
-    <BottomNavigation sx={{ width: 500 }} value={value} onChange={handleChange}>
+    <BottomNavigation  sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3} value={value} onChange={handleChange}>
       <BottomNavigationAction 
       label="Notas" 
       value="notes" 
