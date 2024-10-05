@@ -1,7 +1,6 @@
 import BarChartIcon from "@mui/icons-material/BarChart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import NoteIcon from "@mui/icons-material/Note";
-import PersonIcon from "@mui/icons-material/Person";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useState } from "react";
@@ -29,11 +28,6 @@ function Navigation() {
         label="BlissBits"
         value="Social"
         icon={<FavoriteIcon />}
-      />
-      <BottomNavigationAction
-        label="Perfil"
-        value="profile"
-        icon={<PersonIcon />}
       />
     </BottomNavigation>
   );
