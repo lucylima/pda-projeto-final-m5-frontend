@@ -4,18 +4,14 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 function Note({ note }) {
-  const handleDelete = (id) => {
-   
-  };
-  const handleEdit = (id) => {
-  
-  };
+  const handleDelete = (id) => {};
+  const handleEdit = (id) => {};
 
   return (
     <Paper
       elevation={4}
       sx={{
-        width: "17rem",
+        width: { sm: "16rem", xs: "100%" },
         padding: 2,
       }}
     >
