@@ -7,34 +7,56 @@ import { Navigation } from "../../components/Navigation/Navigation.jsx";
 import { Note } from "../../components/Note/Note.jsx";
 import { NewNoteModal } from "../../components/NewNoteModal/NewNoteModal.jsx";
 
-function NotePage() { 
+function NotePage() {
+  const [notes, setNotes] = useState([
+    {
+      id: 1,
+      title: "Lucy primeira nota",
+      text: "bobeira kkkk",
+      mood: "Surpresa",
+      timestamp: "05/10/24",
+    },
+    {
+      id: 2,
+      title: "Lucy primeira nota",
+      text: "bobeira kkkk",
+      mood: "Surpresa",
+      timestamp: "05/10/24",
+    },
+  ]);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <>
-      <Header />
       <Container
         sx={{
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "space-between",
+          justifyContent: "flex-start" ,
           alignItems: "center",
           width: "100%",
           height: "100%",
           padding: 3,
-          gap: 1,
+          gap: 2,
         }}
       >
-        <Note note={{
-          id: 1,
-          title: "Lucy primeira nota",
-          text: "bobeira kkkk",
-          mood: "Surpresa",
-          timestamp: "05/10/24"
-        }} />
+        {notes.map((note) => {
+          return (
+            <Note
+              key={note.id}
+              note={{
+                id: note.id,
+                title: note.title,
+                text: note.text,
+                mood: note.mood,
+                timestamp: note.timestamp,
+              }}
+            />
+          );
+        })}
       </Container>
       <Fab
         color="primary"
