@@ -14,23 +14,24 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 345,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 10,
   px: 3,
   py: 2,
 };
 
 function NewNoteModal({ open, handleClose }) {
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
   const [mood, setMood] = useState("");
 
-  const handleChange = (event) => {
-    setMood(event.target.value);
-  };
+  const handleTitleChange = (event) => setTitle(event.target.value);
+  const handleTextChange = (event) => setText(event.target.value);
+  const handleMoodChange = (event) => setMood(event.target.value);
 
   const handleSaveNote = () => {
-    handleClose()
+    handleClose();
   };
 
   return (
@@ -47,14 +48,22 @@ function NewNoteModal({ open, handleClose }) {
           noValidate
           autoComplete="off"
         >
-          <Typography sx={{ fontSize: "h5.fontSize" }}>Nova nota</Typography>
-          <TextField id="standard-basic" label="Titulo" variant="outlined" />
+          <Typography variant="h5" component="h2">
+            Nova nota
+          </Typography>
+          <TextField
+            id="standard-basic"
+            label="Titulo"
+            variant="outlined"
+            onChange={handleTitleChange}
+          />
 
           <TextField
             id="outlined-textarea"
             label="Como você se sente hoje?"
             multiline
             rows={4}
+            onChange={handleTextChange}
           />
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Mood</InputLabel>
@@ -63,7 +72,7 @@ function NewNoteModal({ open, handleClose }) {
               id="demo-simple-select"
               value={mood}
               label="mood"
-              onChange={handleChange}
+              onChange={handleMoodChange}
             >
               <MenuItem value="Alegre">Alegria 😄</MenuItem>
               <MenuItem value="Raiva">Raiva 😠</MenuItem>
