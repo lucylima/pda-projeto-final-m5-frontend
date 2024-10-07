@@ -2,7 +2,6 @@ import AddIcon from "@mui/icons-material/Add";
 import Container from "@mui/material/Container";
 import Fab from "@mui/material/Fab";
 import { useState } from "react";
-import { Header } from "../../components/Header/Header.jsx";
 import { Navigation } from "../../components/Navigation/Navigation.jsx";
 import { Note } from "../../components/Note/Note.jsx";
 import { NewNoteModal } from "../../components/NewNoteModal/NewNoteModal.jsx";
@@ -25,6 +24,7 @@ function NotePage() {
     },
   ]);
   const [open, setOpen] = useState(false);
+  
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -35,7 +35,7 @@ function NotePage() {
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "flex-start" ,
+          justifyContent: "flex-start",
           alignItems: "center",
           width: "100%",
           height: "100%",
