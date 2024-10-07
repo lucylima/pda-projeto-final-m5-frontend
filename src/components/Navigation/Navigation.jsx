@@ -13,12 +13,19 @@ function Navigation() {
   };
 
   return (
-    <BottomNavigation  sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3} value={value} onChange={handleChange}>
-      <BottomNavigationAction 
-      label="Notas" 
-      value="notes" 
-      icon={<NoteIcon />} 
-      />
+    <BottomNavigation
+      sx={{
+        display: { md: "none" },
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+      }}
+      elevation={3}
+      value={value}
+      onChange={handleChange}
+    >
+      <BottomNavigationAction label="Notas" value="notes" icon={<NoteIcon />} />
       <BottomNavigationAction
         label="MoodCharts"
         value="Charts"
