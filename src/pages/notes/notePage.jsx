@@ -17,19 +17,41 @@ function NotePage() {
     },
     {
       id: 2,
-      title: "Lucy primeira nota",
+      title: "colinas de pirajá",
+      text: "bobeira kkkk",
+      mood: "Surpresa",
+      timestamp: "05/10/24",
+    },
+    {
+      id: 3,
+      title: "colinas de pirajá",
+      text: "bobeira kkkk",
+      mood: "Surpresa",
+      timestamp: "05/10/24",
+    },
+    {
+      id: 4,
+      title: "colinas de pirajá",
+      text: "bobeira kkkk",
+      mood: "Surpresa",
+      timestamp: "05/10/24",
+    },
+    {
+      id: 5,
+      title: "colinas de pirajá",
       text: "bobeira kkkk",
       mood: "Surpresa",
       timestamp: "05/10/24",
     },
   ]);
   const [open, setOpen] = useState(false);
-  
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <>
+      <Header />
       <Container
         sx={{
           display: "flex",
