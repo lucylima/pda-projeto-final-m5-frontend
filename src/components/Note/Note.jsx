@@ -2,10 +2,13 @@ import Paper from "@mui/material/Paper";
 import NoteActions from "./NoteActions";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
 
 function Note({ note }) {
-  const handleDelete = (id) => {};
-  const handleEdit = (id) => {};
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:1721/notes/${id}`);
+  };
+  const handleEdit = async (id) => {};
 
   return (
     <Paper
