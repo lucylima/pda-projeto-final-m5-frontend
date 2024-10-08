@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import axios from "axios";
 import { useState } from "react";
 
 function RegisterPage() {
@@ -13,6 +14,7 @@ function RegisterPage() {
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -20,8 +22,13 @@ function RegisterPage() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = () => {
-    // axios post
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post("http://localhost:1721/user", {
+      username,
+      email,
+      password,
+    });
   };
 
   return (
@@ -49,6 +56,7 @@ function RegisterPage() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
+              marginBottom: 3,
             },
           }}
           noValidate
@@ -84,6 +92,7 @@ function RegisterPage() {
           <Button variant="contained" onClick={handleSubmit}>
             Entrar
           </Button>
+          <Button variant="text">Já possui cadastro? Faça login</Button>
         </Box>
       </Container>
     </>
