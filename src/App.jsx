@@ -1,4 +1,3 @@
-import "./App.css";
 import { LoginPage } from "./pages/login/LoginPage.jsx";
 import { RegisterPage } from "./pages/register/RegisterPage.jsx";
 import { BlissFieldsPage } from "./pages/blissFields/BlissFieldsPage.jsx";
@@ -18,9 +17,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}> 
-        <Header />
         <NotePage />
-        <Navigation />
       </ThemeProvider>
     </>
   );
