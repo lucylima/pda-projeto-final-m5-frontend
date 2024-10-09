@@ -3,10 +3,11 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import axios from "axios";
 import { useState } from "react";
 
-function LoginPage() {''
-  const [email, setEmail] = useState();
+function LoginPage() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleEmailChange = (event) => {
@@ -16,8 +17,10 @@ function LoginPage() {''
     setPassword(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (event) => {
     // axios post
+    event.preventDefault();
+    
   };
 
   return (
@@ -44,6 +47,7 @@ function LoginPage() {''
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            marginBottom: 3,
           },
         }}
         noValidate
