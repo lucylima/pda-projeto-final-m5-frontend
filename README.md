@@ -11,14 +11,14 @@ Curtidas e comentários nos tweets são desabilitados para manter o foco no bem-
 
 ### 🔧 Instalação
 
-Clone o repositório:
-git clone https://github.com/lucylima/pda-projeto-final-m5-frontend.git
+- Clone o repositório:
+- git clone https://github.com/lucylima/pda-projeto-final-m5-frontend.git
 
-Instale as dependências:
-npm install
+- Instale as dependências:
+- npm install
 
-Execute o servidor de desenvolvimento:
-npm run dev
+- Execute o servidor de desenvolvimento:
+- npm run dev
 
 
 ## ⚙️ Estrutura do projeto
