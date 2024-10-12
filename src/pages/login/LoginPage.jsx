@@ -18,9 +18,12 @@ function LoginPage() {
   };
 
   const handleSubmit = async (event) => {
-    // axios post
     event.preventDefault();
-    
+    const {data} = await axios.post("http://localhost:1721/login", {
+      email,
+      password,
+    });
+    window.sessionStorage.setItem("userId", data.user.user_id);
   };
 
   return (
