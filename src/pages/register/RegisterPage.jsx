@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 
@@ -24,7 +25,7 @@ function RegisterPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:1721/user", {
+    const { status } = await axios.post("http://localhost:1721/user", {
       username,
       email,
       password,
@@ -43,7 +44,11 @@ function RegisterPage() {
           height: "100vh",
         }}
       >
-        <Typography variant="h4" component="h3" sx={{ textAlign: "center" }}>
+        <Typography
+          variant="h4"
+          component="h3"
+          sx={{ textAlign: "center", fontFamily: "BlissFieldsLogo" }}
+        >
           BlissFields
         </Typography>
         <Box
@@ -92,7 +97,9 @@ function RegisterPage() {
           <Button variant="contained" onClick={handleSubmit}>
             Entrar
           </Button>
-          <Button variant="text">Já possui cadastro? Faça login</Button>
+          <Button variant="text" component={Link} to="/">
+            Já possui cadastro? Faça login
+          </Button>
         </Box>
       </Container>
     </>
