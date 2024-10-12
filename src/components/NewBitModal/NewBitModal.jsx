@@ -3,21 +3,39 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import axios from "axios";
+import { useContext, useState } from "react";
+import { BitContext } from "../../context/bitsContext";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 350,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 10,
   px: 3,
   py: 2,
 };
 
+
 function NewBitModal({ open, handleClose }) {
+  const { bit, setBit } = useContext(BitContext);
+  const [text, setText] = useState("");
+  const handleTextChange = (event) => {
+    setText(event.target.value);
+  };
+
+  const handleSubmitBit = async () => {
+    const { data } = await axios.post("http://localhost:1721/bits", {
+      text,
+      user_id: window.sessionStorage.getItem("userId"),
+    });
+    setBit([...bit, data.bits]);
+    handleClose();
+  };
+
   return (
     <Modal
       open={open}
@@ -33,19 +51,17 @@ function NewBitModal({ open, handleClose }) {
           autoComplete="off"
         >
           <Typography sx={{ fontSize: "h5.fontSize" }}>Novo Bit</Typography>
-          <TextField
-            id="standard-basic"
-            label="Estou me sentindo"
-            variant="outlined"
-          />
 
           <TextField
             id="outlined-textarea"
             label="Como você se sente hoje?"
             multiline
             rows={4}
+            onChange={handleTextChange}
           />
-          <Button variant="contained">Plantar</Button>
+          <Button variant="contained" onClick={handleSubmitBit}>
+            Plantar
+          </Button>
         </Box>
       </Box>
     </Modal>
