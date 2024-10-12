@@ -30,36 +30,31 @@ function Header() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
-            variant="h5"
+            variant="h4"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component="h2"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
+              fontFamily: "BlissFieldsLogo",
               color: "inherit",
-              textDecoration: "none",
+              pointerEvents: "none",
             }}
           >
             BlissFields
           </Typography>
+
           <Typography
-            variant="h5"
+            variant="h4"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component="h2"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
+              fontFamily: "BlissFieldsLogo",
               color: "inherit",
-              textDecoration: "none",
+              pointerEvents: "none",
             }}
           >
             BlissFields
@@ -77,9 +72,7 @@ function Header() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Configurações">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="user initials">
-                  LL
-                </Avatar>
+                <Avatar alt="user initials">LL</Avatar>
               </IconButton>
             </Tooltip>
             <Menu
