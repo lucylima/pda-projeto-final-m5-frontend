@@ -7,7 +7,9 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import axios from "axios";
+import { NoteContext } from "../../context/noteContext.jsx";
 
 const style = {
   position: "absolute",
@@ -21,7 +23,11 @@ const style = {
   py: 2,
 };
 
+const userID = window.sessionStorage.getItem("userId");
+
 function NewNoteModal({ open, handleClose }) {
+  const { note, setNote } = useContext(NoteContext);
+
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [mood, setMood] = useState("");
@@ -30,7 +36,17 @@ function NewNoteModal({ open, handleClose }) {
   const handleTextChange = (event) => setText(event.target.value);
   const handleMoodChange = (event) => setMood(event.target.value);
 
-  const handleSaveNote = () => {
+  const handleSaveNote = async (event) => {
+    event.preventDefault();
+    const { data } = await axios.post("http://localhost:1721/notes", {
+      title,
+      text,
+      mood,
+      user_id: userID,
+    });
+
+    console.log(data);
+    setNote([...note, data.note]);
     handleClose();
   };
 
