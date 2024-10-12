@@ -19,7 +19,7 @@ function LoginPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const {data} = await axios.post("http://localhost:1721/login", {
+    const { data } = await axios.post("http://localhost:1721/login", {
       email,
       password,
     });
@@ -37,7 +37,15 @@ function LoginPage() {
         height: "100vh",
       }}
     >
-      <Typography variant="h4" component="h3" sx={{ textAlign: "center" }}>
+      <Typography
+        variant="h4"
+        component="h3"
+        sx={{
+          textAlign: "center",
+          fontFamily: "BlissFieldsLogo",
+          pointerEvents: "none",
+        }}
+      >
         BlissFields
       </Typography>
       <Box
@@ -57,7 +65,7 @@ function LoginPage() {
         autoComplete="off"
       >
         <Typography variant="h5" component="h2" sx={{ textAlign: "center" }}>
-          login
+          Login
         </Typography>
         <TextField
           id="email-field"
@@ -77,6 +85,7 @@ function LoginPage() {
         <Button variant="contained" onClick={handleSubmit}>
           Entrar
         </Button>
+        <Button variant="text">Não possui login? Cadastre-se</Button>
       </Box>
     </Container>
   );
