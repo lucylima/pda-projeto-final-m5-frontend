@@ -5,23 +5,32 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 
-function BitPost() {
+function BitPost({ bit }) {
+  const dateFormat = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toLocaleString("pt-br");
+  };
+  const nameInitialsFormat = (name) => {
+    return name.split("")[0].toUpperCase();
+  };
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      variant="elevation"
+      sx={{ maxWidth: 400, width: "100%"  }}
+    >
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            {nameInitialsFormat(bit.user)}
           </Avatar>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={bit.user}
+        subheader={dateFormat(bit.timestamp)}
       />
       <CardContent>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+        <Typography variant="body1" sx={{ color: "text.secondary" }}>
+          {bit.text}
         </Typography>
       </CardContent>
     </Card>
