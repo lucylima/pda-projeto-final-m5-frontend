@@ -5,8 +5,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import axios from "axios";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,7 +25,11 @@ function LoginPage() {
       email,
       password,
     });
-    window.sessionStorage.setItem("userId", data.user.user_id);
+    console.log(data);
+    if (data) {
+      window.sessionStorage.setItem("userId", data.user.user_id);
+      navigate("/notes");
+    }
   };
 
   return (
@@ -85,7 +91,9 @@ function LoginPage() {
         <Button variant="contained" onClick={handleSubmit}>
           Entrar
         </Button>
-        <Button variant="text">Não possui login? Cadastre-se</Button>
+        <Button variant="text" component={Link} to="/register">
+          Não possui login? Cadastre-se
+        </Button>
       </Box>
     </Container>
   );
