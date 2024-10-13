@@ -44,8 +44,6 @@ function NewNoteModal({ open, handleClose }) {
       mood,
       user_id: userID,
     });
-
-    console.log(data);
     setNote([...note, data.note]);
     handleClose();
   };
