@@ -40,6 +40,7 @@ function NotePage() {
           height: "100%",
           padding: 3,
           gap: 2,
+          marginBottom: 8,
         }}
       >
         {note.map((note) => {
