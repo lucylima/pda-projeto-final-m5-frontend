@@ -4,6 +4,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 
+const dateFormat = (timestamp) => {
+  const date = new Date(timestamp);
+  return date.toLocaleString("pt-br");
+};
+
 function Note({ note }) {
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:1721/notes/${id}`);
@@ -62,7 +67,7 @@ function Note({ note }) {
         }}
       >
         <Typography variant="body2">{note.mood}</Typography>
-        <Typography variant="body2">{note.timestamp}</Typography>
+        <Typography variant="body2">{dateFormat(note.timestamp)}</Typography>
       </Box>
     </Paper>
   );
