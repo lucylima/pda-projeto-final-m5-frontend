@@ -34,7 +34,7 @@ function NotePage() {
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "flex-start",
+          justifyContent: { md: "flex-start", xs: "flex-start" },
           alignItems: "center",
           width: "100%",
           height: "100%",
@@ -47,7 +47,7 @@ function NotePage() {
           return (
             <Note
               key={note.notes_id}
-              note={{
+              Note={{
                 id: note.notes_id,
                 title: note.title,
                 text: note.text,
