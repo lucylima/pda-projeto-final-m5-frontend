@@ -10,13 +10,22 @@ import { NoteProvider } from "./context/noteContext.jsx";
 import { RouterProvider } from "react-router-dom";
 import Router from "./router/router.jsx";
 import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <CssBaseline />
     <NoteProvider>
       <BitProvider>
-        <RouterProvider router={Router} />
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <RouterProvider router={Router} />
+        </ThemeProvider>
       </BitProvider>
     </NoteProvider>
   </StrictMode>
