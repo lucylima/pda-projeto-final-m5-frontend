@@ -25,7 +25,6 @@ function LoginPage() {
       email,
       password,
     });
-    console.log(data);
     if (data) {
       window.sessionStorage.setItem("userId", data.user.user_id);
       navigate("/notes");
@@ -59,7 +58,7 @@ function LoginPage() {
         sx={{
           "& > :not(style)": {
             m: 1,
-            width: "25ch",
+            width: "16rem",
             mx: "auto",
             display: "flex",
             flexDirection: "column",
