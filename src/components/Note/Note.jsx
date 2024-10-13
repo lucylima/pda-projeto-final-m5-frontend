@@ -3,16 +3,22 @@ import NoteActions from "./NoteActions";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import { useContext } from "react";
+import { NoteContext } from "../../context/noteContext.jsx";
 
 const dateFormat = (timestamp) => {
   const date = new Date(timestamp);
   return date.toLocaleString("pt-br");
 };
 
-function Note({ note }) {
+function Note({ Note }) {
+  const { note, setNote } = useContext(NoteContext);
+
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:1721/notes/${id}`);
+    await axios.delete(`http://localhost:1721/Notes/${id}`);
+    setNote(note.filter((n) => n.notes_id !== id));
   };
+
   const handleEdit = async (id) => {};
 
   return (
@@ -40,14 +46,14 @@ function Note({ note }) {
           fontWeight={500}
           sx={{ width: "100%" }}
         >
-          {note.title}
+          {Note.title}
         </Typography>
         <NoteActions
           handleDelete={() => {
-            handleDelete(note.id);
+            handleDelete(Note.id);
           }}
           handleEdit={() => {
-            handleEdit(note.id);
+            handleEdit(Note.id);
           }}
         />
       </Box>
@@ -55,7 +61,7 @@ function Note({ note }) {
         variant="body1"
         sx={{ textAlign: "left", width: "100%", marginBottom: "1rem" }}
       >
-        {note.text}
+        {Note.text}
       </Typography>
       <Box
         sx={{
@@ -66,8 +72,8 @@ function Note({ note }) {
           width: "100%",
         }}
       >
-        <Typography variant="body2">{note.mood}</Typography>
-        <Typography variant="body2">{dateFormat(note.timestamp)}</Typography>
+        <Typography variant="body2">{Note.mood}</Typography>
+        <Typography variant="body2">{dateFormat(Note.timestamp)}</Typography>
       </Box>
     </Paper>
   );
