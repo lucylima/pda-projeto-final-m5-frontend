@@ -9,7 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import SettingsDialog from "../../SettingsDialog/SettingsDialog";
+import { SettingsDialog } from "../SettingsDialog/SettingsDialog.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -30,6 +30,21 @@ function Header() {
   const handleClose = (value) => {
     setDialogOpen(false);
     setSelectedValue(value);
+  };
+
+  const handlePageClick = (event) => {
+    const menu = event.currentTarget.innerText;
+    switch (menu) {
+      case "NOTAS":
+        navigate("/notes");
+        break;
+      case "MOODCHARTS":
+        navigate("/charts");
+        break;
+      case "BLISSBITS":
+        navigate("/blissfields");
+        break;
+    }
   };
 
   const handleCloseUserMenu = (event) => {
@@ -87,6 +102,7 @@ function Header() {
               <Button
                 key={page}
                 sx={{ my: 2, color: "white", display: "block" }}
+                onClick={handlePageClick}
               >
                 {page}
               </Button>
