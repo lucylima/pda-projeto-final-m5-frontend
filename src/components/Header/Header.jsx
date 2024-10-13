@@ -9,19 +9,42 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import SettingsDialog from "../../SettingsDialog/SettingsDialog";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const pages = ["Notas", "MoodCharts", "BlissBits"];
 const settings = ["Conta", "Configurações", "Logout"];
 
 function Header() {
+  const navigate = useNavigate();
+
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState();
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleClose = (value) => {
+    setDialogOpen(false);
+    setSelectedValue(value);
+  };
+
+  const handleCloseUserMenu = (event) => {
+    const menu = event.currentTarget.innerText;
+    switch (menu) {
+      case "Conta":
+        break;
+      case "Configurações":
+        setDialogOpen(true);
+        break;
+      case "Logout":
+        window.sessionStorage.removeItem("userId");
+        navigate("/");
+        break;
+    }
     setAnchorElUser(null);
   };
 
@@ -101,6 +124,11 @@ function Header() {
             </Menu>
           </Box>
         </Toolbar>
+        <SettingsDialog
+          selectedValue={selectedValue}
+          open={dialogOpen}
+          onClose={handleClose}
+        />
       </Container>
     </AppBar>
   );
