@@ -26,6 +26,7 @@ function Note({ Note }) {
       elevation={4}
       sx={{
         width: { sm: "16rem", xs: "100%" },
+        height: "auto",
         padding: 2,
       }}
     >
@@ -59,7 +60,13 @@ function Note({ Note }) {
       </Box>
       <Typography
         variant="body1"
-        sx={{ textAlign: "left", width: "100%", marginBottom: "1rem" }}
+        sx={{
+          textAlign: "left",
+          width: "100%",
+          marginBottom: "1rem",
+          wordWrap: "break-word",
+          height: "auto"
+        }}
       >
         {Note.text}
       </Typography>
