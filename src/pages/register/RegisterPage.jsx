@@ -25,7 +25,7 @@ function RegisterPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { status } = await axios.post("http://localhost:1721/user", {
+    const { status } = await axios.post("https://api-blissfields.onrender.com/user", {
       username,
       email,
       password,

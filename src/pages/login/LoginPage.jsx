@@ -21,7 +21,7 @@ function LoginPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { data } = await axios.post("http://localhost:1721/login", {
+    const { data } = await axios.post("https://api-blissfields.onrender.com/login", {
       email,
       password,
     });
