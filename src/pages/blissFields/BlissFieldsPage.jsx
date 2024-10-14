@@ -18,7 +18,7 @@ function BlissFieldsPage() {
 
   useEffect(() => {
     const fetchBits = async () => {
-      const { data } = await axios.get("http://localhost:1721/bits");
+      const { data } = await axios.get("https://api-blissfields.onrender.com/bits");
       setBit([...data.bits]);
     };
     fetchBits();

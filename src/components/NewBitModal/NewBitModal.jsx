@@ -28,7 +28,7 @@ function NewBitModal({ open, handleClose }) {
   };
 
   const handleSubmitBit = async () => {
-    const { data } = await axios.post("http://localhost:1721/bits", {
+    const { data } = await axios.post("https://api-blissfields.onrender.com/bits", {
       text,
       user_id: window.sessionStorage.getItem("userId"),
     });
