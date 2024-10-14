@@ -9,6 +9,8 @@ import { NewNoteModal } from "../../components/NewNoteModal/NewNoteModal.jsx";
 import { NoteContext } from "../../context/noteContext.jsx";
 import axios from "axios";
 
+const userID = window.sessionStorage.getItem("userId")
+
 function NotePage() {
   const { note, setNote } = useContext(NoteContext);
   const [open, setOpen] = useState(false);
@@ -19,9 +21,9 @@ function NotePage() {
   useEffect(() => {
     const getNotes = async () => {
       const { data } = await axios.get(
-        "https://api-blissfields.onrender.com/notes/6ea827a4-f250-45bc-81e1-1416c09e415b"
+        `https://api-blissfields.onrender.com/notes/${userID}`
       );
-      setNote([...note, ...data.notes]);
+      setNote([...data.notes]);
     };
     getNotes();
   }, []);

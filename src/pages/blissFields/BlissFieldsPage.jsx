@@ -12,13 +12,14 @@ import axios from "axios";
 function BlissFieldsPage() {
   const { bit, setBit } = useContext(BitContext);
   const [open, setOpen] = useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
     const fetchBits = async () => {
       const { data } = await axios.get("http://localhost:1721/bits");
-      setBit([...bit, ...data.bits]);
+      setBit([...data.bits]);
     };
     fetchBits();
   }, []);
@@ -37,17 +38,19 @@ function BlissFieldsPage() {
           width: "100%",
         }}
       >
-        {bit.map((bit) => (
-          <BitPost
-            key={bit.bits_id}
-            bit={{
-              initials: bit.initials,
-              user: bit.User.username,
-              text: bit.text,
-              timestamp: bit.createdAt,
-            }}
-          />
-        ))}
+        {bit.map((bit) => {
+          return (
+            <BitPost
+              key={bit.bits_id}
+              bit={{
+                initials: bit.initials,
+                user: bit.User.username,
+                text: bit.text,
+                timestamp: bit.createdAt,
+              }}
+            />
+          );
+        })}
       </Box>
       <Fab
         color="primary"
