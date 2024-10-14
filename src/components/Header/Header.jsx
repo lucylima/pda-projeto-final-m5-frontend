@@ -108,7 +108,7 @@ function Header() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Configurações">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="user initials">LL</Avatar>
+                <Avatar alt="user initials"></Avatar>
               </IconButton>
             </Tooltip>
             <Menu
