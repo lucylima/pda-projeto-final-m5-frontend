@@ -4,10 +4,9 @@ import NoteIcon from "@mui/icons-material/Note";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navigation() {
-  const navigate = useNavigate();
   const [value, setValue] = useState("Notes");
 
   const handleChange = (event, newValue) => {
@@ -27,10 +26,18 @@ function Navigation() {
       value={value}
       onChange={handleChange}
     >
-      <BottomNavigationAction label="Notas" value="Notes" icon={<NoteIcon />} />
+      <BottomNavigationAction
+        label="Notas"
+        icon={<NoteIcon />}
+        value="/notes"
+        to="/notes"
+        LinkComponent={Link}
+      />
       <BottomNavigationAction
         label="BlissBits"
-        value="Social"
+        to="/blissfields"
+        value="blissfields"
+        LinkComponent={Link}
         icon={<FavoriteIcon />}
       />
     </BottomNavigation>
