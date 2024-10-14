@@ -9,11 +9,11 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { SettingsDialog } from "../SettingsDialog/SettingsDialog.jsx";
+import { SettingsModal } from "../SettingsModal/SettingsModal.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const pages = ["Notas", "MoodCharts", "BlissBits"];
+const pages = ["Notas", "BlissBits"];
 const settings = ["Conta", "Configurações", "Logout"];
 
 function Header() {
@@ -37,9 +37,6 @@ function Header() {
     switch (menu) {
       case "NOTAS":
         navigate("/notes");
-        break;
-      case "MOODCHARTS":
-        navigate("/charts");
         break;
       case "BLISSBITS":
         navigate("/blissfields");
@@ -140,7 +137,7 @@ function Header() {
             </Menu>
           </Box>
         </Toolbar>
-        <SettingsDialog
+        <SettingsModal
           selectedValue={selectedValue}
           open={dialogOpen}
           onClose={handleClose}
