@@ -26,13 +26,12 @@ const style = {
 
 const userID = window.sessionStorage.getItem("userId");
 
-function EditNoteModal({ open, handleClose }) {
+function EditNoteModal({ open, handleClose, fields }) {
   const { note, setNote } = useContext(NoteContext);
 
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
-  const [mood, setMood] = useState("");
-  const [eraseValue, setEraseValue] = useState("")
+  const [title, setTitle] = useState(fields.title);
+  const [text, setText] = useState(fields.text);
+  const [mood, setMood] = useState(fields.mood);
 
   const handleTitleChange = (event) => setTitle(event.target.value);
   const handleTextChange = (event) => setText(event.target.value);
@@ -40,12 +39,13 @@ function EditNoteModal({ open, handleClose }) {
 
   const handleSaveNote = async (event) => {
     event.preventDefault();
-    const { data } = axios.put(`http://localhost:1721/${id}`, {
+    await axios.put(`http://localhost:1721/notes/${fields.id}`, {
       title,
       text,
       mood,
     });
-    setNote([...note, data.note]);
+    const { data } = await axios.get(`http://localhost:1721/notes/${userID}`);
+    setNote([...data.notes]);
     handleClose();
   };
 
@@ -71,7 +71,7 @@ function EditNoteModal({ open, handleClose }) {
             label="Titulo"
             variant="outlined"
             onChange={handleTitleChange}
-            value={eraseValue}
+            value={title}
           />
 
           <TextField
@@ -80,7 +80,7 @@ function EditNoteModal({ open, handleClose }) {
             multiline
             rows={4}
             onChange={handleTextChange}
-            value={eraseValue}
+            value={text}
           />
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Mood</InputLabel>
