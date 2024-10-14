@@ -38,7 +38,7 @@ function NewNoteModal({ open, handleClose }) {
 
   const handleSaveNote = async (event) => {
     event.preventDefault();
-    const { data } = await axios.post("http://localhost:1721/notes", {
+    const { data } = await axios.post("https://api-blissfields.onrender.com/notes", {
       title,
       text,
       mood,
