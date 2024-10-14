@@ -94,23 +94,23 @@ npm run dev
   <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/ste-coding">
+      <a href="https://github.com/Sabrina-Marks">
         <img src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_1.png" width="115" alt="Sabrina"/><br />
         <sub><b>Sabrina</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/Monteiro-Let">
+      <a href="https://github.com/Nateli-Silva">
         <img src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_21.png" width="115" alt="Natieli"/><br />
           <sub><b>Nátieli</b></sub>
     <td align="center">
-      <a href="https://github.com/andreirce">
+      <a href="https://github.com/RebecaBarbosa6">
         <img src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_15.png" width="115" alt="Mário"/><br />
         <sub><b>Rebeca</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/hewelbelmonte">
+      <a href="https://github.com/andreirce">
         <img src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_7.png" width="115" alt="Andrei Levi"/><br />
         <sub><b>Andrei Levi</b></sub>
       </a>
@@ -122,7 +122,7 @@ npm run dev
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/GabrielRER">
+      <a href="https://github.com/mariosilvv">
         <img src=	"https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_5.png" width="115" alt="rebeca"/><br />
         <sub><b>Mário</b></sub>
       </a>
