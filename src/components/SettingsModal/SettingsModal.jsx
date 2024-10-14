@@ -56,7 +56,6 @@ function SettingsModal({ onClose, selectedValue, open }) {
     <Modal
       open={open}
       onClose={handleClose}
-      column
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
@@ -81,10 +80,9 @@ function SettingsModal({ onClose, selectedValue, open }) {
             </Typography>
 
             <TextField
-              id="outlined-password-input"
+              id="outlined-username-input"
               label="Nome de usuário"
               type="text"
-              autoComplete="current-password"
               onChange={handleUsernameChange}
             />
 
@@ -104,7 +102,6 @@ function SettingsModal({ onClose, selectedValue, open }) {
             <RadioGroup
               aria-labelledby="theme-toggle"
               name="theme-toggle"
-              column
               value={mode}
               onChange={(event) => setMode(event.target.value)}
             >
