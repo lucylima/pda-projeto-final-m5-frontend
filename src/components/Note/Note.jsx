@@ -17,17 +17,11 @@ function Note({ Note }) {
   const [openEditModal, setOpenEditModal] = useState(false);
 
   const handleOpen = () => setOpenEditModal(true);
-  const handleClose = () => {
-    setOpenEditModal(false);
-  };
+  const handleClose = () => setOpenEditModal(false);
 
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:1721/Notes/${id}`);
     setNote(note.filter((n) => n.notes_id !== id));
-  };
-
-  const handleEdit = async (id, title, text, mood) => {
-
   };
 
   return (
@@ -62,10 +56,7 @@ function Note({ Note }) {
           handleDelete={() => {
             handleDelete(Note.id);
           }}
-          handleEdit={() => {
-            handleOpen();
-            handleEdit(Note.id, Note.title, Note.text, Note.mood);
-          }}
+          handleEdit={handleOpen}
         />
       </Box>
       <Typography
@@ -92,7 +83,16 @@ function Note({ Note }) {
         <Typography variant="body2">{Note.mood}</Typography>
         <Typography variant="body2">{dateFormat(Note.timestamp)}</Typography>
       </Box>
-      <EditNoteModal open={openEditModal} handleClose={handleClose} />
+      <EditNoteModal
+        open={openEditModal}
+        handleClose={handleClose}
+        fields={{
+          id: Note.id,
+          title: Note.title,
+          text: Note.text,
+          mood: Note.mood,
+        }}
+      />
     </Paper>
   );
 }
