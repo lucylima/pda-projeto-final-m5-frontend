@@ -14,7 +14,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const pages = ["Notas", "BlissBits"];
-const settings = ["Conta", "Configurações", "Logout"];
+const settings = ["Configurações", "Logout"];
 
 function Header() {
   const navigate = useNavigate();
