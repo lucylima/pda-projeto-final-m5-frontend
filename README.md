@@ -11,7 +11,7 @@ Curtidas e comentários nos tweets são desabilitados para manter o foco no bem-
 
 Aqui está uma apresentação do projeto: ()
 
-Link Deploy: (...)
+Link para o [site](https://blissfieldsnotes.vercel.app/)
 
 
 ## Índice🔗  <a name="indice"></a>
@@ -79,6 +79,7 @@ Link do esquema de banco de dados: [DB Diagram West API](,,,)
 ```bash
 git clone https://github.com/lucylima/pda-projeto-final-m5-frontend.git
 ```
+
 
 2. Instale as dependências
 ```bash
