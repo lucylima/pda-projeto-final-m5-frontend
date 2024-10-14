@@ -6,8 +6,10 @@ import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 
 function RegisterPage() {
+  const navigate = useNavigate()
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +32,9 @@ function RegisterPage() {
       email,
       password,
     });
+  if(status == 201){
+   navigate("/")
+}
   };
 
   return (
