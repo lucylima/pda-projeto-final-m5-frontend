@@ -7,9 +7,14 @@ import { Navigation } from "../../components/Navigation/Navigation.jsx";
 import { NewBitModal } from "../../components/NewBitModal/NewBitModal.jsx";
 import { useState, useContext, useEffect } from "react";
 import { BitContext } from "../../context/bitsContext.jsx";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 
+const userID = window.sessionStorage.getItem("userId")
+
 function BlissFieldsPage() {
+const navigate = useNavigate()
   const { bit, setBit } = useContext(BitContext);
   const [open, setOpen] = useState(false);
 
@@ -21,7 +26,7 @@ function BlissFieldsPage() {
       const { data } = await axios.get("https://api-blissfields.onrender.com/bits");
       setBit([...data.bits]);
     };
-    fetchBits();
+    userID == null ? navigate("/") : fetchBits()
   }, []);
 
   return (
