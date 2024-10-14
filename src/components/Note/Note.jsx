@@ -3,8 +3,9 @@ import NoteActions from "./NoteActions";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NoteContext } from "../../context/noteContext.jsx";
+import { EditNoteModal } from "../EditNoteModal/EditNoteModal.jsx";
 
 const dateFormat = (timestamp) => {
   const date = new Date(timestamp);
@@ -13,19 +14,27 @@ const dateFormat = (timestamp) => {
 
 function Note({ Note }) {
   const { note, setNote } = useContext(NoteContext);
+  const [openEditModal, setOpenEditModal] = useState(false);
+
+  const handleOpen = () => setOpenEditModal(true);
+  const handleClose = () => {
+    setOpenEditModal(false);
+  };
 
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:1721/Notes/${id}`);
     setNote(note.filter((n) => n.notes_id !== id));
   };
 
-  const handleEdit = async (id) => {};
+  const handleEdit = async (id, title, text, mood) => {
+
+  };
 
   return (
     <Paper
       elevation={4}
       sx={{
-        width: { sm: "16rem", xs: "100%" },
+        width: { sm: "17rem", xs: "100%" },
         height: "auto",
         padding: 2,
       }}
@@ -54,7 +63,8 @@ function Note({ Note }) {
             handleDelete(Note.id);
           }}
           handleEdit={() => {
-            handleEdit(Note.id);
+            handleOpen();
+            handleEdit(Note.id, Note.title, Note.text, Note.mood);
           }}
         />
       </Box>
@@ -65,7 +75,7 @@ function Note({ Note }) {
           width: "100%",
           marginBottom: "1rem",
           wordWrap: "break-word",
-          height: "auto"
+          height: "auto",
         }}
       >
         {Note.text}
@@ -82,6 +92,7 @@ function Note({ Note }) {
         <Typography variant="body2">{Note.mood}</Typography>
         <Typography variant="body2">{dateFormat(Note.timestamp)}</Typography>
       </Box>
+      <EditNoteModal open={openEditModal} handleClose={handleClose} />
     </Paper>
   );
 }
