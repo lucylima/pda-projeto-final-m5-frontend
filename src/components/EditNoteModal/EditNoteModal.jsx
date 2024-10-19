@@ -24,7 +24,7 @@ const style = {
   outline: 0,
 };
 
-const userID = window.sessionStorage.getItem("userId");
+const userID = sessionStorage.getItem("userId");
 
 function EditNoteModal({ open, handleClose, fields }) {
   const { note, setNote } = useContext(NoteContext);
@@ -39,11 +39,14 @@ function EditNoteModal({ open, handleClose, fields }) {
 
   const handleSaveNote = async (event) => {
     event.preventDefault();
-    await axios.put(`https://api-blissfields-997949264503.southamerica-east1.run.app/notes/${fields.id}`, {
-      title,
-      text,
-      mood,
-    });
+    await axios.put(
+      `https://api-blissfields-997949264503.southamerica-east1.run.app/notes/${fields.id}`,
+      {
+        title,
+        text,
+        mood,
+      }
+    );
     const { data } = await axios.get(
       `https://api-blissfields-997949264503.southamerica-east1.run.app/notes/${userID}`
     );

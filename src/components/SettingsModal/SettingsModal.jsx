@@ -23,7 +23,7 @@ const style = {
   outline: 0,
 };
 
-const userID = window.sessionStorage.getItem("userId");
+const userID = sessionStorage.getItem("userId");
 
 function SettingsModal({ onClose, selectedValue, open }) {
   const { mode, setMode } = useColorScheme();

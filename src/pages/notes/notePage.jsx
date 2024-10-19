@@ -10,7 +10,7 @@ import { NoteContext } from "../../context/noteContext.jsx";
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
 
-const userID = window.sessionStorage.getItem("userId")
+const userID = sessionStorage.getItem("userId")
 
 function NotePage() {
   const navigate = useNavigate()

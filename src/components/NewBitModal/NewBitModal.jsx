@@ -19,6 +19,7 @@ const style = {
   py: 2,
 };
 
+const userID = sessionStorage.getItem("userId");
 
 function NewBitModal({ open, handleClose }) {
   const { bit, setBit } = useContext(BitContext);
@@ -30,7 +31,7 @@ function NewBitModal({ open, handleClose }) {
   const handleSubmitBit = async () => {
     const { data } = await axios.post("https://api-blissfields-997949264503.southamerica-east1.run.app/bits", {
       text,
-      user_id: window.sessionStorage.getItem("userId"),
+      user_id: userID,
     });
     setBit([...bit, data.bits]);
     handleClose();

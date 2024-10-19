@@ -7,7 +7,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const userID = window.sessionStorage.getItem("userId");
+const userID = sessionStorage.getItem("userId");
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -23,17 +23,15 @@ function LoginPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await axios.post(
+    const { data, status } = await axios.post(
       "https://api-blissfields-997949264503.southamerica-east1.run.app/login",
       {
         email,
         password,
       }
     );
-    const { data, status } = response;
-    console.log(status);
-    window.sessionStorage.setItem("userId", data.user.user_id);
-    if (userID) {
+    sessionStorage.setItem("userId", data.user.user_id);
+    if (status == 200 && userID) {
       setTimeout(() => {
         navigate("/notes");
       }, 1000);
