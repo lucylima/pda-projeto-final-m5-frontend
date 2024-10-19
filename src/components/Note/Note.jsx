@@ -20,7 +20,7 @@ function Note({ Note }) {
   const handleClose = () => setOpenEditModal(false);
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:1721/Notes/${id}`);
+    await axios.delete(`https://api-blissfields-997949264503.southamerica-east1.run.app/notes/${id}`);
     setNote(note.filter((n) => n.notes_id !== id));
   };
 

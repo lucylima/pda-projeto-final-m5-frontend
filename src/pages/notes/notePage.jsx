@@ -23,7 +23,7 @@ function NotePage() {
   useEffect(() => {
     const getNotes = async () => {
       const { data } = await axios.get(
-        `https://api-blissfields.onrender.com/notes/${userID}`
+        `https://api-blissfields-997949264503.southamerica-east1.run.app/notes/${userID}`
       );
       setNote([...data.notes]);
     };

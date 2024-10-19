@@ -39,13 +39,13 @@ function EditNoteModal({ open, handleClose, fields }) {
 
   const handleSaveNote = async (event) => {
     event.preventDefault();
-    await axios.put(`https://api-blissfields.onrender.com/notes/${fields.id}`, {
+    await axios.put(`https://api-blissfields-997949264503.southamerica-east1.run.app/notes/${fields.id}`, {
       title,
       text,
       mood,
     });
     const { data } = await axios.get(
-      `https://api-blissfields.onrender.com/notes/${userID}`
+      `https://api-blissfields-997949264503.southamerica-east1.run.app/notes/${userID}`
     );
     setNote([...data.notes]);
     handleClose();

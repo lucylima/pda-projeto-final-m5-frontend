@@ -7,6 +7,8 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+const userID = window.sessionStorage.getItem("userId");
+
 function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -21,13 +23,20 @@ function LoginPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { data } = await axios.post("https://api-blissfields.onrender.com/login", {
-      email,
-      password,
-    });
-    if (data) {
-      window.sessionStorage.setItem("userId", data.user.user_id);
-      navigate("/notes");
+    const response = await axios.post(
+      "https://api-blissfields-997949264503.southamerica-east1.run.app/login",
+      {
+        email,
+        password,
+      }
+    );
+    const { data, status } = response;
+    console.log(status);
+    window.sessionStorage.setItem("userId", data.user.user_id);
+    if (userID) {
+      setTimeout(() => {
+        navigate("/notes");
+      }, 1000);
     }
   };
 

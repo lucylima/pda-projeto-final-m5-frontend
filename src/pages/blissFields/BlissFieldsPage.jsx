@@ -23,7 +23,7 @@ const navigate = useNavigate()
 
   useEffect(() => {
     const fetchBits = async () => {
-      const { data } = await axios.get("https://api-blissfields.onrender.com/bits");
+      const { data } = await axios.get("https://api-blissfields-997949264503.southamerica-east1.run.app/bits");
       setBit([...data.bits]);
     };
     userID == null ? navigate("/") : fetchBits()

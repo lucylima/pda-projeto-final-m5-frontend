@@ -40,7 +40,7 @@ function SettingsModal({ onClose, selectedValue, open }) {
 
   const handleSaveAccount = async () => {
     const { status } = await axios.put(
-      `https://api-blissfields.onrender.com/user/${userID}`,
+      `https://api-blissfields-997949264503.southamerica-east1.run.app/${userID}`,
       {
         username,
         password,
